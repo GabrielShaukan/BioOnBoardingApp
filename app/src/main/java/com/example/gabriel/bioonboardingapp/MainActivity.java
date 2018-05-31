@@ -10,6 +10,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mSlideViewPager;
     private LinearLayout mDotLayout;
 
+    private SliderAdapter sliderAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,5 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
         mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         mDotLayout = (LinearLayout) findViewById(R.id.dotsLayout);
+
+        sliderAdapter = new SliderAdapter(this);
+
+        mSlideViewPager.setAdapter(sliderAdapter);
     }
 }
