@@ -16,11 +16,12 @@ public class SliderAdapter extends PagerAdapter {
     LayoutInflater layoutInflater;
 
     public SliderAdapter(Context context) {
-        this.context = context
+        this.context = context;
     }
 
     //Arrays
     public  int[] slide_Img = {
+            R.drawable.photo,
             R.drawable.android,
             R.drawable.c_logo,
             R.drawable.circuit_board,
@@ -31,6 +32,7 @@ public class SliderAdapter extends PagerAdapter {
     };
 
     public String[] slide_Headings = {
+            "Gabriel Shaukan",
             "Android",
             "C++",
             "Electrical Engineering",
@@ -41,6 +43,7 @@ public class SliderAdapter extends PagerAdapter {
     };
 
     public String[] slide_Desc = {
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi",
@@ -64,7 +67,7 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        LayoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slide_layout, container, false);
 
         ImageView slideImg = (ImageView) view.findViewById(R.id.slideImg);
