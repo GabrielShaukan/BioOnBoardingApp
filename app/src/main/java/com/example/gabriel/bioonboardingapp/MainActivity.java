@@ -10,6 +10,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mSlideViewPager;
     private LinearLayout mDotLayout;
 
+    private android.widget.TextView[] mDots;
+
     private SliderAdapter sliderAdapter;
 
     @Override
@@ -23,5 +25,21 @@ public class MainActivity extends AppCompatActivity {
         sliderAdapter = new SliderAdapter(this);
 
         mSlideViewPager.setAdapter(sliderAdapter);
+
+        addDotsIndicator();
+    }
+
+    public void addDotsIndicator() {
+
+        mDots = new android.widget.TextView[3];
+
+        for(int i = 0; i < mDots.length; i++) {
+            mDots[i] = new android.widget.TextView(this);
+            mDots[i].setText(android.text.Html.fromHtml("&#8226;"));
+            mDots[i].setTextColor(getResources().getColor(R.color.colorTransparentWhite));
+
+            mDotLayout.addView(mDots[i]);
+        }
+
     }
 }
