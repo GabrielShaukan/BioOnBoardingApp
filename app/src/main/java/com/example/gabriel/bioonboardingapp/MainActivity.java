@@ -3,6 +3,8 @@ package com.example.gabriel.bioonboardingapp;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
 
     private SliderAdapter sliderAdapter;
 
+    private Button nxtBtn;
+    private Button prevBtn;
+
+    private int mCurrentPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         mDotLayout = (LinearLayout) findViewById(R.id.dotsLayout);
 
+        prevBtn = (Button) findViewById(R.id.prevBtn);
+        nxtBtn = (Button) findViewById(R.id.nxtBtn);
+
         sliderAdapter = new SliderAdapter(this);
 
         mSlideViewPager.setAdapter(sliderAdapter);
@@ -29,6 +39,22 @@ public class MainActivity extends AppCompatActivity {
         addDotsIndicator(0);
 
         mSlideViewPager.addOnPageChangeListener(viewListener);
+
+        //OnClickListeners
+
+        nxtBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSlideViewPager.setCurrentItem(mCurrentPage + 1);
+            }
+        });
+
+        prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSlideViewPager.setCurrentItem(mCurrentPage - 1);
+            }
+        });
     }
 
     public void addDotsIndicator(int position) {
@@ -61,6 +87,33 @@ public class MainActivity extends AppCompatActivity {
         public void onPageSelected(int position) {
 
             addDotsIndicator(position);
+
+            mCurrentPage = position;
+
+            if (position == 0) {
+
+                nxtBtn.setEnabled(true);
+                prevBtn.setEnabled(false);
+                prevBtn.setVisibility(View.INVISIBLE);
+
+                nxtBtn.setText("Next");
+                prevBtn.setText("");
+
+            } else if (position == mDots.length - 1) {
+                nxtBtn.setEnabled(true);
+                prevBtn.setEnabled(true);
+                prevBtn.setVisibility(View.VISIBLE);
+
+                nxtBtn.setText("Finish");
+                prevBtn.setText("Back");
+            } else {
+                nxtBtn.setEnabled(true);
+                prevBtn.setEnabled(true);
+                prevBtn.setVisibility(View.VISIBLE);
+
+                nxtBtn.setText("Next");
+                prevBtn.setText("Back");
+            }
 
         }
 
