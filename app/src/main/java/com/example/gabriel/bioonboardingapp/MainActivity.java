@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addDotsIndicator(int position) {
 
-        mDots = new android.widget.TextView[7];
+        mDots = new android.widget.TextView[8];
         mDotLayout.removeAllViews();
 
         for(int i = 0; i < mDots.length; i++) {
